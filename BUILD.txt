@@ -1,0 +1,159 @@
+coxeter-growth -- kernel build record, 2026-10-16 14:47 EDT
+Toolchain: leanprover/lean4:v4.35.0-rc2
+Mathlib rev: 065356127b1dc0016f66b7283ce0ce2c4055aa55
+Build: lake build (defaultTargets CoxeterGrowth, Challenge, Solution) -> Build completed successfully (8942 jobs)
+  Challenge.lean: 20 'declaration uses sorry' warnings (the compared placeholders), no errors
+  CoxeterGrowth/Family.lean, Solution.lean, CoxeterGrowth.lean: no warnings
+  CoxeterGrowth/TriangleNF.lean, CoxeterGrowth/Instances.lean: style-linter warnings only (unused simp
+  arguments, unused variables, unreachable tactics), no errors; these two files are unchanged in this revision
+
+Files: see the regenerated FILES block at the end of this record (the earlier per-file list written by the proving agent is superseded; later edits to Challenge.lean, README.md and formalization.yaml changed those hashes).
+
+#print axioms (lake env lean on a check file importing Solution and CoxeterGrowth):
+  'TriangleGrowth.growth_series' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'TriangleGrowth.triangle_matrix_exists' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'TriangleGrowth.growth_series_23' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'TriangleGrowth.growth_series_24' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'TriangleGrowth.growth_series_33' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'TriangleGrowth.sphere23_values' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'TriangleGrowth.sphere23_rec_fails_at_4' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'TriangleGrowth.sphere23_padovan' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'TriangleGrowth.plastic_exists_unique' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'TriangleGrowth.sphere23_growth_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'TriangleGrowth.sphere23_root_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'TriangleGrowth.sphere_mono' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'TriangleGrowth.sphere_symm' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'TriangleGrowth.sphere_ge_plastic' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'TriangleGrowth.rate_exists_unique' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'TriangleGrowth.sphere_root_tendsto_rate' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'TriangleGrowth.rate_lt_rate' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'TriangleGrowth.plastic_le_rate' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'TriangleGrowth.rate_lt_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'TriangleGrowth.rate_tendsto_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'CoxeterGrowth.Triangle.growth_series' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'CoxeterGrowth.Triangle.length_eq_len_ev' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'CoxeterGrowth.Triangle.sphere_eq_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'CoxeterGrowth.Triangle.nf_series'' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'CoxeterGrowth.Triangle.sphere23_root_tendsto_plastic' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'CoxeterGrowth.plasticNumber_unique'' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'CoxeterGrowth.TwoThreeInf.main' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'CoxeterGrowth.TwoThreeInf.sphere_root_tendsto_plastic' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'CoxeterGrowth.TwoThreeInf.length_eq_ev' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'CoxeterGrowth.Triangle.NFs_mono' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'CoxeterGrowth.Triangle.card_NFs_swap' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'CoxeterGrowth.Triangle.card_NFs_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'CoxeterGrowth.Triangle.rec_of_series' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'CoxeterGrowth.Triangle.lower_of_rec' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'CoxeterGrowth.Triangle.upper_of_rec' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'CoxeterGrowth.Triangle.root_tendsto_of_bounds'' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'CoxeterGrowth.Triangle.rateFn_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'CoxeterGrowth.Triangle.rate23_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+  (20/20 compared names; every line above is exactly [propext, Classical.choice, Quot.sound])
+
+sorry count: Challenge.lean 20; all other modules (CoxeterGrowth/*, CoxeterGrowth.lean, Solution.lean) 0
+native_decide count (all files): 0; admit: 0; axiom declarations: 0
+Challenge.lean imports: import Mathlib
+Statement match Challenge vs Solution, 20 compared theorems:
+  whitespace-normalised source text: 20/20 identical
+  kernel types (Expr of each declaration, binder names erased, de Bruijn indices and universe
+  parameters kept; dumped from a file importing only Challenge and one importing only Solution): 20/20 identical
+
+Numerical sanity checks (Python: exact integer series; Tits-representation breadth-first search with float
+matrices rounded to 1e-7; mpmath at 50 digits for the rates):
+  == 1-2. series formula vs brute-force BFS (Tits representation), n = 0..12 ==
+    (2,2) brute   [1, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]
+    (2,2) formula [1, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4] MATCH
+    (2,3) brute   [1, 3, 5, 7, 9, 12, 16, 21, 28, 37, 49, 65, 86]
+    (2,3) formula [1, 3, 5, 7, 9, 12, 16, 21, 28, 37, 49, 65, 86] MATCH
+    (3,2) brute   [1, 3, 5, 7, 9, 12, 16, 21, 28, 37, 49, 65, 86]
+    (3,2) formula [1, 3, 5, 7, 9, 12, 16, 21, 28, 37, 49, 65, 86] MATCH
+    (2,4) brute   [1, 3, 5, 8, 12, 17, 25, 37, 54, 79, 116, 170, 249]
+    (2,4) formula [1, 3, 5, 8, 12, 17, 25, 37, 54, 79, 116, 170, 249] MATCH
+    (3,3) brute   [1, 3, 6, 10, 16, 26, 42, 68, 110, 178, 288, 466, 754]
+    (3,3) formula [1, 3, 6, 10, 16, 26, 42, 68, 110, 178, 288, 466, 754] MATCH
+    (2,5) brute   [1, 3, 5, 8, 13, 20, 30, 46, 71, 109, 167, 256, 393]
+    (2,5) formula [1, 3, 5, 8, 13, 20, 30, 46, 71, 109, 167, 256, 393] MATCH
+    (3,4) brute   [1, 3, 6, 11, 19, 33, 57, 99, 172, 298, 517, 897, 1556]
+    (3,4) formula [1, 3, 6, 11, 19, 33, 57, 99, 172, 298, 517, 897, 1556] MATCH
+    (4,4) brute   [1, 3, 6, 12, 22, 40, 74, 136, 250, 460, 846, 1556, 2862]
+    (4,4) formula [1, 3, 6, 12, 22, 40, 74, 136, 250, 460, 846, 1556, 2862] MATCH
+    (2,6) brute   [1, 3, 5, 8, 13, 21, 33, 51, 80, 126, 198, 311, 488]
+    (2,6) formula [1, 3, 5, 8, 13, 21, 33, 51, 80, 126, 198, 311, 488] MATCH
+    (5,6) brute   [1, 3, 6, 12, 24, 47, 91, 177, 345, 672, 1308, 2547, 4960]
+    (5,6) formula [1, 3, 6, 12, 24, 47, 91, 177, 345, 672, 1308, 2547, 4960] MATCH
+    (6,6) brute   [1, 3, 6, 12, 24, 48, 94, 184, 362, 712, 1400, 2752, 5410]
+    (6,6) formula [1, 3, 6, 12, 24, 48, 94, 184, 362, 712, 1400, 2752, 5410] MATCH
+
+  == recurrence a(n) = sum_{1<=i<p,1<=j<q} a(n-i-j) for n >= p+q ==
+    (2,2) holds for n in [p+q, 40]: True; fails at n in [2, p+q): [2, 3]
+    (2,3) holds for n in [p+q, 40]: True; fails at n in [2, p+q): [2, 3, 4]
+    (2,4) holds for n in [p+q, 40]: True; fails at n in [2, p+q): [2, 3, 4, 5]
+    (2,5) holds for n in [p+q, 40]: True; fails at n in [2, p+q): [2, 3, 4, 5, 6]
+    (2,6) holds for n in [p+q, 40]: True; fails at n in [2, p+q): [2, 3, 4, 5, 6, 7]
+    (3,2) holds for n in [p+q, 40]: True; fails at n in [2, p+q): [2, 3, 4]
+    (3,3) holds for n in [p+q, 40]: True; fails at n in [2, p+q): [2, 3, 4, 5]
+    (3,4) holds for n in [p+q, 40]: True; fails at n in [2, p+q): [2, 3, 4, 5, 6]
+    (3,5) holds for n in [p+q, 40]: True; fails at n in [2, p+q): [2, 3, 4, 5, 6, 7]
+    (3,6) holds for n in [p+q, 40]: True; fails at n in [2, p+q): [2, 3, 4, 5, 6, 7, 8]
+    (4,2) holds for n in [p+q, 40]: True; fails at n in [2, p+q): [2, 3, 4, 5]
+    (4,3) holds for n in [p+q, 40]: True; fails at n in [2, p+q): [2, 3, 4, 5, 6]
+    (4,4) holds for n in [p+q, 40]: True; fails at n in [2, p+q): [2, 3, 4, 5, 6, 7]
+    (4,5) holds for n in [p+q, 40]: True; fails at n in [2, p+q): [2, 3, 4, 5, 6, 7, 8]
+    (4,6) holds for n in [p+q, 40]: True; fails at n in [2, p+q): [2, 3, 4, 5, 6, 7, 8, 9]
+    (5,2) holds for n in [p+q, 40]: True; fails at n in [2, p+q): [2, 3, 4, 5, 6]
+    (5,3) holds for n in [p+q, 40]: True; fails at n in [2, p+q): [2, 3, 4, 5, 6, 7]
+    (5,4) holds for n in [p+q, 40]: True; fails at n in [2, p+q): [2, 3, 4, 5, 6, 7, 8]
+    (5,5) holds for n in [p+q, 40]: True; fails at n in [2, p+q): [2, 3, 4, 5, 6, 7, 8, 9]
+    (5,6) holds for n in [p+q, 40]: True; fails at n in [2, p+q): [2, 3, 4, 5, 6, 7, 8, 9, 10]
+    (6,2) holds for n in [p+q, 40]: True; fails at n in [2, p+q): [2, 3, 4, 5, 6, 7]
+    (6,3) holds for n in [p+q, 40]: True; fails at n in [2, p+q): [2, 3, 4, 5, 6, 7, 8]
+    (6,4) holds for n in [p+q, 40]: True; fails at n in [2, p+q): [2, 3, 4, 5, 6, 7, 8, 9]
+    (6,5) holds for n in [p+q, 40]: True; fails at n in [2, p+q): [2, 3, 4, 5, 6, 7, 8, 9, 10]
+    (6,6) holds for n in [p+q, 40]: True; fails at n in [2, p+q): [2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+
+  == 3. monotonicity and symmetry, 2 <= p, q, p', q' <= 6, n <= 12 ==
+    comparable ordered pairs checked: 225 x 13 lengths; violations: 0
+    symmetry checks: 25 x 13; violations: 0
+    strictly comparable pairs with a_(p,q)(12) >= a_(p',q')(12): []
+
+  == 4. tau_{p,q} (50 digits, printed to 12) ==
+    plastic rho = 1.32471795724475
+    p=2: q=2:1.0  q=3:1.32471795724  q=4:1.46557123188  q=5:1.53415774491  q=6:1.5701473122
+    p=3: q=2:1.32471795724  q=3:1.61803398875  q=4:1.73469134569  q=5:1.78711554569  q=6:1.81240361927
+    p=4: q=2:1.46557123188  q=3:1.73469134569  q=4:1.83928675521  q=5:1.88506607809  q=6:1.90648476188
+    p=5: q=2:1.53415774491  q=3:1.78711554569  q=4:1.88506607809  q=5:1.92756197548  q=6:1.94720860912
+    p=6: q=2:1.5701473122  q=3:1.81240361927  q=4:1.90648476188  q=5:1.94720860912  q=6:1.96594823665
+    tau_(2,3) - rho = 3.7284e-31
+    (2,2): g(x) = x^2, g = 1 only at x = 1, tau = 1 (not > 1): excluded
+    tau strictly increasing in each argument on 2..6: True
+    tau symmetric: True
+    min over hyperbolic pairs: (mpf('1.3247179572447460259609088544784701809173552540632568'), (2, 3))
+    tau_(10,10) = 1.99802947026229   (-> 2)
+    tau_(20,20) = 1.99999809261681   (-> 2)
+    tau_(40,40) = 1.99999999999818   (-> 2)
+    tau_(80,80) = 2.0   (-> 2)
+
+  == 5. bounds used in the proof, n <= 200 ==
+    violations: []
+    (2,3): min_n a(n)/rho^n over n>=2 = 2.8492015
+    (2,3): a(n)^(1/n) at n=200: 1.331893714
+
+  Note: tau_(3,3) is the golden ratio (1 - (t+t^2)^2 = (1-t-t^2)(1+t+t^2)) and tau_(2,4) = 1.46557... is the
+  real root of x^3 = x^2 + 1; the sphere ratios a(12)/a(11) = 754/466 and 249/170 agree.
+FILES (sha256  lines  name) — regenerated 2026-10-16 (final: module-system headers `module` / `public import` / `@[expose] public section` added to every .lean for the registry's source rule; build green 8942 jobs; #print axioms standard for all 20 compared names; Challenge vs Solution statements identical 20/20; 20 sorry in Challenge only; no native_decide)
+  26c59829e795f2b6c030e719580b73decb92f3c67d4f876980469fb0e09afbd2    237  Challenge.lean
+  714f85db51df892d53b846d00b8ba9fbb980814cd3983da122767ce7beb942d2     24  CoxeterGrowth.lean
+  0acf7420bd0526723402ee971c4b58aaf685675875df76b7523e3ee467a5147f    563  CoxeterGrowth/Family.lean
+  08229afda401c8e9c63ec64f9f00a7b6713571dcc18d2cbceb690ad934f703bc    260  CoxeterGrowth/Instances.lean
+  9e26605b5e2117e046fb8d3b783f60a949449e8059776ef0d5d5355c83a8904b     74  CoxeterGrowth/Plastic.lean
+  605cb28a8b5a81393e14a94ca5a6175040878199a4663b5914ffa625e7e30211    316  CoxeterGrowth/Triangle.lean
+  4d8b9d95e62f3a48245bb86d1d4ebe2e9728bc37d51064b8fc1a0b21b6999c93    709  CoxeterGrowth/TriangleNF.lean
+  d96a0f8cc8a35e424e52752dc4af5e3623f68e8e8af0efd463157fc5f5ed3e5c    809  CoxeterGrowth/TwoThreeInf.lean
+  e335f9a39f9d4442f2b613dafe82c367d25c884d50bbb07617b2c7d246791e08    165  Solution.lean
+  485462fce69524d71d2a7778ffd30c28de72e7a3e373d59593156d5b661ac91d     31  comparator.json
+  eac4e3833dc7de9357dc2dcd41c7f5633b570398b769161df415df8076348c56     17  lakefile.toml
+  068a6ff874268ad532f404e18a0434289dafdb588cf7547a4ebccac0d4e65973    117  lake-manifest.json
+  8dc8d6f560141069d9073e370611716ef77ada0da8ffa37e2149f44b2e63ac7a      1  lean-toolchain
+  d32be532ae3b0129081943d5ba0140833d203720b69e21bc64c735160db351cb     21  LICENSE
+  104443561fcf3c2d80c04af87c6074b8c3af505935f0dddecacfa388a34e4143    192  README.md
+  0ee58dbd63f45d463eaba67163a5bf02b8d31220aa6c7f17a3a4a54e238fc4ad    675  formalization.yaml

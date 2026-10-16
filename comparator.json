@@ -1,0 +1,31 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "TriangleGrowth.growth_series",
+    "TriangleGrowth.triangle_matrix_exists",
+    "TriangleGrowth.growth_series_23",
+    "TriangleGrowth.growth_series_24",
+    "TriangleGrowth.growth_series_33",
+    "TriangleGrowth.sphere23_values",
+    "TriangleGrowth.sphere23_rec_fails_at_4",
+    "TriangleGrowth.sphere23_padovan",
+    "TriangleGrowth.plastic_exists_unique",
+    "TriangleGrowth.sphere23_growth_bounds",
+    "TriangleGrowth.sphere23_root_tendsto",
+    "TriangleGrowth.sphere_mono",
+    "TriangleGrowth.sphere_symm",
+    "TriangleGrowth.sphere_ge_plastic",
+    "TriangleGrowth.rate_exists_unique",
+    "TriangleGrowth.sphere_root_tendsto_rate",
+    "TriangleGrowth.rate_lt_rate",
+    "TriangleGrowth.plastic_le_rate",
+    "TriangleGrowth.rate_lt_two",
+    "TriangleGrowth.rate_tendsto_two"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}

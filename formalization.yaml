@@ -1,0 +1,675 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+# Review status: self-assessed by the author, with an in-house
+# adversarial mock-referee pass applied to this surface before
+# submission (see the review block below).
+
+project:
+  name: "Growth series of the triangle Coxeter groups (p, q, infinity), with the PGL(2,Z) instance: Padovan sphere sizes and growth rate the plastic number"
+  description: >-
+    Kernel-checked proof, for every Coxeter system on three generators
+    a, b, c with m(a,c) = p, m(b,c) = q, m(a,b) = infinity and
+    p, q >= 2, of the growth-series identity in the ring of integer
+    power series: (sum_n a(n) X^n) * (1 - (X + ... + X^(p-1))(X + ...
+    + X^(q-1))) = (1 + X)(1 + ... + X^(p-1))(1 + ... + X^(q-1)), where
+    a(n) is the number of group elements of Coxeter length n; together
+    with its instances (2,3,inf), (2,4,inf), (3,3,inf) and, for
+    (2,3,inf) = PGL(2,Z), the sphere sizes 1, 3, 5, 7, 9, 12, 16, ...,
+    the Padovan identity a(n) = Pad(n+5) for n >= 2, the two-sided
+    bounds 2 rho^n <= a(n) <= 4 rho^n (n >= 2), and the growth rate
+    a(n)^(1/n) -> rho, the plastic number, the unique real root > 1
+    of x^3 = x + 1; and, for the whole family, monotonicity and
+    symmetry in (p, q), the growth rate of every hyperbolic member, and
+    the minimality of the plastic number. Twenty compared theorems: (1)
+    the general identity
+    for all p, q >= 2; (2) non-vacuity, a Coxeter matrix of that type
+    exists for all p, q >= 2; (3)-(5) the three instances;
+    (6) the (2,3,inf) sphere sizes a(0..4) = 1, 3, 5, 7, 9 and the
+    recursion a(n+5) = a(n+3) + a(n+2) for all n; (7) that the
+    recursion fails one step earlier, a(4) != a(2) + a(1); (8) a(n) = Pad(n+5) for n >= 2, for any
+    sequence with the Padovan initial values and recursion;
+    (9) existence and uniqueness of the plastic number; (10) the
+    bounds; (11) the n-th-root limit; (12) monotonicity: a(n) of a
+    (p,q,inf) system is at most a(n) of a (p',q',inf) system for
+    p <= p', q <= q'; (13) symmetry in p and q; (14) 2 rho^n <= a(n),
+    n >= 2, for every hyperbolic member; (15) for (p,q) != (2,2)
+    exactly one tau > 1 solves (tau^-1 + ... + tau^-(p-1))(tau^-1 +
+    ... + tau^-(q-1)) = 1; (16) a(n)^(1/n) -> tau; (17) tau strictly
+    increasing in (p,q); (18) rho <= tau with equality exactly at
+    (2,3), (3,2), so the plastic number is the minimal growth rate of
+    the family; (19) tau < 2; (20) tau -> 2 as p, q -> infinity (for
+    every sigma < 2 there is N with tau > sigma whenever p, q >= N).
+    The family statements (12)-(20) give the growth rate of every
+    hyperbolic (p, q, inf) group as the unique root tau > 1 of an
+    explicit equation, strictly increasing in the labels, with the
+    plastic number as the family minimum attained only at (2,3,inf)
+    and (3,2,inf); they restrict to this family, and kernel-check
+    there, Terragni's monotonicity (2016, Thm. A), Floyd's planar
+    minimality (1992, p. 482) and the continuity of the growth rate
+    (Floyd 1992; Yukita 2024). The mathematics is classical and
+    no novelty is claimed for it: the growth series of a Coxeter group
+    is rational and determined by its finite parabolic subgroups
+    (Steinberg 1968; Humphreys 1990 Section 5.12); growth of planar
+    hyperbolic Coxeter groups is Floyd 1992 and Cannon-Wagreich 1992,
+    and the (2,3,inf), (2,4,inf) and (3,3,inf) sphere sequences are
+    OEIS A096231, A179070 (shifted) and A054886, with generating
+    functions derived there from Cannon-Wagreich Prop. 3.1 and, for
+    A096231, the Padovan form a(n) = A000931(n+10) recorded; Floyd 1992
+    (p. 482) proves (2,3,inf) minimal among cusped planar groups and
+    Kellerhals 2013 gives an alternative proof; Bucher-Talambutsa 2016
+    Prop. 18 proves statement (11) itself by a normal form and, with
+    Mann's bound, the minimality of rho for PGL(2,Z) over all
+    generating sets. The (p, q, inf) family is hyperbolic exactly when
+    (p, q) differs from (2, 2); the affine (2, 2, inf) is included in
+    (1). The contribution
+    claimed is the kernel-checked general identity for all p, q at
+    once, and the family statements (12)-(20) derived from it, from
+    Mathlib's CoxeterSystem alone — Mathlib at this pin has
+    no growth series, no exchange or deletion property and no
+    parabolic-subgroup API — by constructing the amalgam normal forms,
+    lifting their action to the group, proving Coxeter length equals
+    normal-form length, and counting. No "first formalization" claim
+    is made. Application, cited and not a claim of the entry: the
+    (2,3,inf) group is the Weyl group of AE_3 = PGL(2,Z)
+    (Feingold-Frenkel 1983) and, in the Damour-Henneaux-Nicolai
+    billiard description of the Belinski-Khalatnikov-Lifshitz limit (a
+    conjecture for generic singularities, Henneaux-Persson-Spindel 2008
+    Section 2.9), the reflection group of the billiard of
+    3+1-dimensional vacuum gravity near a spacelike singularity
+    (Damour-Henneaux-Nicolai 2003 Section 8; Henneaux-Persson-Spindel
+    2008 Section 3.1), where a(n) counts the chambers reachable from
+    the fundamental chamber after exactly n wall collisions over all
+    initial data, so (10)-(11) give the growth rate of those outcomes
+    (elementary reflection-group geometry, not formal content). Hypotheses are inline: the Coxeter system enters
+    through Mathlib's CoxeterSystem with the three matrix entries as
+    hypotheses, rho through its defining equation and 1 < rho, the
+    Padovan sequence through its initial values and recursion; the
+    compared statements use only core Mathlib vocabulary
+    (CoxeterSystem, CoxeterSystem.length, Nat.card, PowerSeries.mk,
+    Finset.range/Ico sums, Filter.Tendsto, nhds, real powers) — zero
+    custom definitions.
+  authors:
+    - "Stephanie Alexander"
+  license: "MIT"
+  responsible_maintainers:
+    - "Stephanie Alexander"
+
+classification:
+  arxiv: ["math.GR", "gr-qc", "math-ph"]
+  msc2020: ["20F55", "20F69", "05A15", "11B39", "83C75", "17B67"]
+
+sources:
+  - title: "Endomorphisms of linear algebraic groups"
+    authors:
+      - "Robert Steinberg"
+    id: "Memoirs of the American Mathematical Society 80 (1968)"
+    # Crossref-verified 2026-10-16: DOI 10.1090/memo/0080.
+    type: "book"
+    location: "https://doi.org/10.1090/memo/0080"
+    relationship: "background"
+    note: >-
+      The rationality of the growth (Poincare) series of a Coxeter
+      group and its expression through the finite parabolic subgroups
+      — the classical route to the (p, q, inf) formula. Cited for
+      attribution; the entry does not formalize Steinberg's formula
+      and proves the (p, q, inf) identity directly from normal forms.
+    license: "unknown"
+    author_endorsement: "n/a"
+  - title: "Reflection Groups and Coxeter Groups"
+    authors:
+      - "James E. Humphreys"
+    id: "Cambridge Studies in Advanced Mathematics 29, Cambridge University Press, 1990"
+    # Crossref-verified 2026-10-16: DOI 10.1017/CBO9780511623646.
+    # Section 5.12 ("Poincare series") verified from the table of
+    # contents 2026-10-16.
+    type: "book"
+    location: "https://doi.org/10.1017/CBO9780511623646"
+    relationship: "background"
+    note: >-
+      Standard reference: Section 5.12 for the Poincare series of a
+      general Coxeter group. Cited, not formalized.
+    license: "unknown"
+    author_endorsement: "n/a"
+  - title: "Growth of planar Coxeter groups, P.V. numbers, and Salem numbers"
+    authors:
+      - "William J. Floyd"
+    id: "Mathematische Annalen 293 (1992), 475-483"
+    # Crossref-verified 2026-10-16: DOI 10.1007/BF01444729.
+    type: "article"
+    location: "https://doi.org/10.1007/BF01444729"
+    relationship: "background"
+    note: >-
+      Growth rates of cofinite non-cocompact (cusped) planar
+      hyperbolic Coxeter groups are Pisot numbers; of cocompact ones,
+      Salem numbers; and (p. 482) (2,3,inf) has the minimal growth rate
+      among the cusped planar groups. For (p, q) != (2, 2) the
+      (p, q, inf) groups are cusped planar hyperbolic triangle groups,
+      so their growth rates are Pisot by this theorem ((2, 2, inf) is
+      affine, growth rate 1); for (2,3,inf) the compared statement (11)
+      exhibits the rate as the plastic number, the smallest Pisot
+      number (Siegel 1944). Floyd's theorems are cited, not formalized.
+    license: "unknown"
+    author_endorsement: "n/a"
+  - title: "Growth functions of surface groups"
+    authors:
+      - "James W. Cannon"
+      - "Philip Wagreich"
+    id: "Mathematische Annalen 293 (1992), 239-257"
+    # Crossref-verified 2026-10-16: DOI 10.1007/BF01444714.
+    type: "article"
+    location: "https://doi.org/10.1007/BF01444714"
+    relationship: "background"
+    note: >-
+      Growth functions of planar Coxeter and surface groups; its
+      Proposition 3.1 is the source OEIS credits for the generating
+      functions of the (2,3,inf), (3,3,inf) and (2,5,inf) sphere
+      sequences (A096231, A054886, A265068). Cited per OEIS (the
+      proposition was not read for this entry); not formalized.
+    license: "unknown"
+    author_endorsement: "n/a"
+  - title: "Cofinite hyperbolic Coxeter groups, minimal growth rate and Pisot numbers"
+    authors:
+      - "Ruth Kellerhals"
+    id: "Algebraic & Geometric Topology 13 (2013), 1001-1025"
+    # Crossref-verified 2026-10-16: DOI 10.2140/agt.2013.13.1001.
+    type: "article"
+    location: "https://doi.org/10.2140/agt.2013.13.1001"
+    relationship: "background"
+    note: >-
+      Computes the growth series of the triangle group [3, inf] =
+      (2,3,inf) — the compared instance (3) — and gives (Section 5.2,
+      Proposition and Remark) an elementary alternative proof of
+      Floyd's result that its growth rate, the plastic number, is the
+      minimum over all cofinite non-cocompact planar hyperbolic Coxeter
+      groups, with equality only for [3, inf]; in dimension three the
+      minimum is the tetrahedral group [3,3,6]. The minimality theorems
+      are cited, not formalized; the compared statements (3), (6)-(11)
+      are the kernel-checked instance.
+    license: "unknown"
+    author_endorsement: "n/a"
+  - title: "Exponential growth rates of free and amalgamated products"
+    authors:
+      - "Michelle Bucher"
+      - "Alexey Talambutsa"
+    id: "Israel Journal of Mathematics 212 (2016), 521-546"
+    # Crossref-verified 2026-10-16: DOI 10.1007/s11856-016-1299-4;
+    # arXiv:1209.4071 (full text read 2026-10-15).
+    type: "article"
+    location: "https://doi.org/10.1007/s11856-016-1299-4"
+    relationship: "background"
+    note: >-
+      Proposition 18 (Section 6): the growth rate of PGL(2,Z) in the
+      three Coxeter reflections is the plastic number — compared
+      statement (11), proved there via a normal form (their Lemma 19);
+      with Mann's bound (their Theorem 2) this makes it the minimal
+      growth rate of PGL(2,Z), and of GL(2,Z), over all finite
+      generating sets (cited, not formalized); PSL(2,Z) and SL(2,Z)
+      give sqrt 2 (their Section 1). Their Section 6 also prints the
+      Padovan recursion of statement (6).
+    license: "unknown"
+    author_endorsement: "n/a"
+  - title: "On the growth of a Coxeter group"
+    authors:
+      - "Tommaso Terragni"
+    id: "Groups, Geometry, and Dynamics 10 (2016), 601-618"
+    # Crossref-verified 2026-10-16: DOI 10.4171/GGD/358; arXiv:1312.3437.
+    type: "article"
+    location: "https://doi.org/10.4171/GGD/358"
+    relationship: "background"
+    note: >-
+      Theorem A: sphere sizes are monotone, a_n <= a'_n, whenever
+      m_{st} <= m'_{phi(s)phi(t)} for an injection phi: S -> S'
+      (compared statement (12) is its case phi = id; Corollary 3.2 is
+      the rate inequality); Theorem B: the minimal growth rate over all
+      non-spherical, non-affine Coxeter systems is that of E_10 (about
+      1.1380787);
+      Section 5.8 records the PGL(2,Z) value. Cited for the landscape
+      the (p, q, inf) family sits in; not formalized.
+    license: "unknown"
+    author_endorsement: "n/a"
+  - title: "On the continuity of the growth rate on the space of Coxeter systems"
+    authors:
+      - "Tomoshige Yukita"
+    id: "Groups, Geometry, and Dynamics 18 (2024), 109-126"
+    # Crossref-verified 2026-10-16 (mock referee): DOI 10.4171/GGD/741;
+    # arXiv:2011.09953.
+    type: "article"
+    location: "https://doi.org/10.4171/GGD/741"
+    relationship: "background"
+    note: >-
+      Theorem 3.5: the growth rate is continuous on the space of
+      rank-n Coxeter systems (a label converges if it is eventually
+      constant or tends to infinity, Lemma 3.1); with the growth rate 2
+      of (inf, inf, inf) this gives compared statement (20). Section
+      4.1 restates Floyd 1992 (Theorem, p. 476). Cited, not
+      formalized.
+    license: "unknown"
+    author_endorsement: "n/a"
+  - title: "Algebraic integers whose conjugates lie in the unit circle"
+    authors:
+      - "Carl Ludwig Siegel"
+    id: "Duke Mathematical Journal 11 (1944), 597-602"
+    # Crossref-verified 2026-08-31: DOI resolves, Duke Math. J. 11 (1944).
+    type: "article"
+    location: "https://doi.org/10.1215/S0012-7094-44-01152-X"
+    relationship: "background"
+    note: >-
+      The plastic number is the smallest Pisot number. Cited for the
+      status of the growth rate in (11); not formalized.
+    license: "unknown"
+    author_endorsement: "n/a"
+  - title: "A hyperbolic Kac-Moody algebra and the theory of Siegel modular forms of genus 2"
+    authors:
+      - "Alex J. Feingold"
+      - "Igor B. Frenkel"
+    id: "Mathematische Annalen 263 (1983), 87-144"
+    # Crossref-verified 2026-10-16: DOI 10.1007/BF01457086.
+    type: "article"
+    location: "https://doi.org/10.1007/BF01457086"
+    relationship: "background"
+    note: >-
+      The Weyl group of the hyperbolic Kac-Moody algebra F = AE_3 is
+      PGL(2,Z), the (2,3,inf) triangle group. Cited for the
+      identification used in the application paragraph; the entry's
+      statements are about the abstract Coxeter system and do not
+      formalize the isomorphism with PGL(2,Z).
+    license: "unknown"
+    author_endorsement: "n/a"
+  - title: "Cosmological billiards"
+    authors:
+      - "Thibault Damour"
+      - "Marc Henneaux"
+      - "Hermann Nicolai"
+    id: "Classical and Quantum Gravity 20 (2003), R145-R200"
+    # Crossref-verified 2026-10-16: DOI 10.1088/0264-9381/20/9/201;
+    # arXiv:hep-th/0212256 (full text read 2026-10-15).
+    type: "article"
+    location: "https://doi.org/10.1088/0264-9381/20/9/201"
+    relationship: "background"
+    note: >-
+      The billiard description of the Belinski-Khalatnikov-Lifshitz
+      approach to a spacelike singularity: for vacuum gravity in
+      D = d + 1 dimensions the billiard table is the Weyl chamber of
+      the hyperbolic Kac-Moody algebra AE_d, with AE_3 for D = 4
+      (Section 8). Cited only for the application paragraph: the
+      (2,3,inf) group of this entry is that billiard's reflection
+      group in 3+1 dimensions. The billiard description beyond the
+      homogeneous cases is the BKL conjecture; nothing in the entry
+      depends on it.
+    license: "unknown"
+    author_endorsement: "n/a"
+  - title: "Spacelike Singularities and Hidden Symmetries of Gravity"
+    authors:
+      - "Marc Henneaux"
+      - "Daniel Persson"
+      - "Philippe Spindel"
+    id: "Living Reviews in Relativity 11 (2008), 1"
+    # Crossref-verified 2026-10-16: DOI 10.12942/lrr-2008-1;
+    # arXiv:0710.1818 (full text read 2026-10-15).
+    type: "article"
+    location: "https://doi.org/10.12942/lrr-2008-1"
+    relationship: "background"
+    note: >-
+      Section 3.1: the 3+1 vacuum billiard, its three walls (two
+      symmetry walls, one curvature wall) and the action of
+      PGL(2,Z) = W(AE_3) on the Kasner parameter; Section 2.9: the
+      status of the BKL description as a conjecture. Cited for the
+      application paragraph only.
+    license: "unknown"
+    author_endorsement: "n/a"
+  - title: "OEIS A000931 (Padovan sequence)"
+    authors:
+      - "OEIS Foundation"
+    id: "The On-Line Encyclopedia of Integer Sequences"
+    # Verified 2026-08-31 via OEIS JSON: A000931 satisfies
+    # a(n) = a(n-2) + a(n-3); the compared identity a(n) = Pad(n+5) uses
+    # the convention Pad(0) = Pad(1) = Pad(2) = 1 (Pad(n) = A000931(n+5)).
+    type: "misc"
+    location: "https://oeis.org/A000931"
+    relationship: "background"
+    note: >-
+      The Padovan sequence of compared statement (8), in the
+      convention Pad(n) = A000931(n+5). The (2,3,inf) sphere sequence
+      itself is OEIS A096231 (below); the identification a(n) =
+      A000931(n+10), valid for n >= 2, is recorded there, and the entry
+      claims only the kernel certificate.
+    license: "unknown"
+    author_endorsement: "n/a"
+  - title: "OEIS A096231 (growth series of the (2,3,infinity) triangle group), with A179070 and A054886"
+    authors:
+      - "OEIS Foundation"
+    id: "The On-Line Encyclopedia of Integer Sequences"
+    # Verified 2026-10-16 (mock referee, OEIS pages read): A096231 is the
+    # coordination sequence of the (2,3,inf) tiling with generating
+    # function (1+x)^2(1+x+x^2)/(1-x^2-x^3), derived there from
+    # Cannon-Wagreich 1992 Prop. 3.1, with the recursion
+    # a(n) = a(n-2) + a(n-3) and the cross-reference "Equals
+    # A000931(n+10)"; A054886 is the (3,3,inf) sequence and A179070 the
+    # (2,4,inf) sequence (shifted).
+    type: "misc"
+    location: "https://oeis.org/A096231"
+    relationship: "background"
+    note: >-
+      The prior-art record for compared statements (3)-(8): the
+      (2,3,inf) sphere sequence, its generating function (per
+      Cannon-Wagreich Prop. 3.1), its recursion and its Padovan form
+      are all recorded in OEIS, and the (2,4,inf) and (3,3,inf)
+      instances have their own entries. The entry claims only the
+      kernel certificate of these facts and the general identity (1).
+    license: "unknown"
+    author_endorsement: "n/a"
+
+related_formalizations:
+  - id: "https://github.com/leanprover-community/mathlib4 (Mathlib.GroupTheory.Coxeter.{Basic,Length,Inversion,Matrix}; PowerSeries; Filter.Tendsto; real powers)"
+    relationship: "builds-on"
+    note: >-
+      The compared statements use Mathlib's CoxeterMatrix,
+      CoxeterSystem and CoxeterSystem.length and nothing custom.
+      Mathlib at the pinned revision has no growth or Poincare series
+      of Coxeter groups, no Steinberg formula, no exchange or deletion
+      property, no parabolic subgroups and no minimal coset
+      representatives (checked 2026-10-16): the normal-form
+      construction, the lift of its action, the length identity and
+      the counting are this entry's contribution. Consumed from
+      Mathlib on the compared route: CoxeterSystem.lift /
+      lift_apply_simple with CoxeterMatrix.IsLiftable (the universal
+      property), simple_induction_left, simple_mul_simple_pow,
+      exists_isReduced, length_mul_le, length_simple, length_one, and
+      the real-analysis library for the limit.
+
+  - id: "Registered entry PALOMAR-2026-08-31-000004 (stalex444/mahler-measure-minima)"
+    relationship: "other"
+    note: >-
+      Certifies that x^3 - x - 1 attains the minimal Mahler measure
+      above one among monic irreducible integer cubics — the arithmetic
+      status of the growth rate of (11). Independent of this entry;
+      cited as context.
+
+  - id: "Registered entry PALOMAR-2026-09-01-000005 (stalex444/mahler-minimizer-compositum)"
+    relationship: "other"
+    note: >-
+      Certifies that the largest roots of the Bedford-Kim family
+      x^(n+1)(x^3 - x - 1) + (x^3 + x^2 - 1) increase to the plastic
+      number; by McMullen (2007, eq. 2.4; cited there, not certified)
+      these are the Coxeter-element spectral radii of the E_m star
+      trees — the OTHER Coxeter invariant that lands on rho
+      (Coxeter-element spectral radius, Salem numbers), distinct from
+      the word growth of this entry. Independent of this entry; cited
+      as context.
+
+  - id: "https://github.com/stalex444/pdt-lean (parent development)"
+    relationship: "other"
+    note: >-
+      The broader public project this entry belongs to. This
+      repository is a complete, self-contained proof development;
+      nothing is imported from the parent. The module TwoThreeInf.lean
+      (a second, independent proof of the (2,3,inf) instance by a
+      three-state automaton, ported from a 2026-10-15 development on
+      Lean 4.31) is included as a cross-check and is not on the
+      compared surface.
+
+status:
+  scope: >-
+    Formalized, 20 compared theorems, hypotheses inline, all stated for
+    an arbitrary Coxeter system cs : CoxeterSystem M W on Fin 3 with
+    the matrix entries M 0 1 = 0 (infinity), M 0 2 = p, M 1 2 = q as
+    hypotheses. (1) growth_series: for all p, q >= 2, in Z[[X]],
+    (PowerSeries.mk (n |-> Nat.card {w // cs.length w = n})) *
+    (1 - (sum_{i=1}^{p-1} X^i)(sum_{i=1}^{q-1} X^i)) =
+    (1 + X)(sum_{i=0}^{p-1} X^i)(sum_{i=0}^{q-1} X^i).
+    (2) triangle_matrix_exists: for all p, q >= 2 a CoxeterMatrix
+    (Fin 3) with those entries exists. (3)-(5) growth_series_23/_24/_33:
+    the identity at (2,3), (2,4), (3,3) with the products expanded.
+    (6) sphere23_values: at (2,3), a(0..4) = 1, 3, 5, 7, 9 and
+    a(n+5) = a(n+3) + a(n+2) for all n. (7) sphere23_rec_fails_at_4:
+    a(4) differs from a(2) + a(1). (8) sphere23_padovan: for any
+    pad : N -> N with pad 0 = pad 1 = pad 2 = 1 and pad (n+3) =
+    pad (n+1) + pad n, a(n) = pad (n+5) for n >= 2.
+    (9) plastic_exists_unique: exactly one real rho > 1 with
+    rho^3 = rho + 1. (10) sphere23_growth_bounds: for 1 < rho with
+    rho^3 = rho + 1 and all n >= 2, 2 rho^n <= a(n) <= 4 rho^n.
+    (11) sphere23_root_tendsto: a(n)^(1/n) -> rho. (12) sphere_mono and
+    (13) sphere_symm compare two systems cs, cs' of types (p,q,inf),
+    (p',q',inf) (resp. (q,p,inf)) lengthwise. (14) sphere_ge_plastic:
+    (p,q) != (2,2), 1 < rho, rho^3 = rho + 1 give 2 rho^(n+2) <=
+    a(n+2). (15) rate_exists_unique. (16)-(20) take any tau > 1
+    solving the rate equation: a(n)^(1/n) -> tau; tau < tau' for
+    (p,q) <= (p',q') distinct; rho <= tau and (tau = rho iff (p,q) =
+    (2,3) or (3,2)); tau < 2; for every sigma < 2 there is N with
+    sigma < tau when p, q >= N. NOT formalized (cited): Steinberg's
+    general formula; Floyd's Pisot/Salem dichotomy (that tau is Pisot
+    is not formalized) and his minimality over all cusped planar
+    groups (only its restriction to this family, (14) and (18)); the
+    minimality theorems of Bucher-Talambutsa (over generating sets) and
+    Terragni (over all Coxeter systems); the isomorphism W(2,3,inf) =
+    PGL(2,Z) = W(AE_3); the billiard identification and everything
+    physical. No physical claim is part of the compared statements.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms: ["propext", "Classical.choice", "Quot.sound"]
+  # Every compared theorem's #print axioms output is exactly
+  # [propext, Classical.choice, Quot.sound]; re-elaborated 2026-10-16
+  # for all 20 names independently of the proving agents (BUILD.txt).
+
+automation:
+  methods:
+    - method: "agent"
+      models: ["Anthropic Claude (Opus-class, 2026)"]
+      framework: "Claude Code"
+      tool_setup: >-
+        AI-assisted proof drafting and error-loop iteration against
+        lake build (19 compiler builds for statements (1)-(11) and 12
+        for the family statements (12)-(20), 2026-10-16); every compared
+        declaration kernel-checked and axiom-audited. The (2,3,inf)
+        instance was first proved in a scratch development on
+        2026-10-15 (Lean 4.31, Mathlib fabf563a; three-state automaton,
+        0 sorry, standard axioms) and the series formula for general
+        (p, q) was checked against brute-force sphere counts (Tits
+        representation, breadth-first search) for (2,2), (2,3), (2,4),
+        (2,5), (3,3), (3,4), (4,4), (5,6) to n = 10-12 before the
+        general proof was attempted.
+      cost:
+        wall_time: "scratch instance 2026-10-15 (about three hours over a ten-agent verification run); general theorem and package 2026-10-16, about two and a half hours of wall-clock including a usage-limit pause"
+        spend_usd: "subscription-based"
+        hardware: "local machine, Apple silicon"
+      prompting_notes: >-
+        Statement fixed first (the series identity in Z[[X]] with the
+        Coxeter matrix entries as hypotheses); the normal-form
+        encoding and the dihedral relation through an explicit orbit
+        coordinate were the design decisions; proofs iterated against
+        the compiler gate by gate (relations on normal forms, the
+        descent lemma, the lift, the length identity, the sphere
+        bijection, the counting recursion, the series identity, the
+        instances, the real-analysis limit).
+    - method: "manual"
+      models: []
+      framework: "n/a"
+      tool_setup: >-
+        Author-directed target selection, statement design and
+        acceptance; statements audited against the cited sources.
+      cost:
+        wall_time: "included in the sessions above"
+        spend_usd: "not tracked"
+        hardware: "local machine"
+      prompting_notes: "n/a"
+  spend_usd: "subscription-based"
+  notes: >-
+    Human-directed, machine-verified workflow: the author fixes targets
+    and reviews statements; AI assistance drafts and repairs proofs;
+    the Lean kernel is the acceptance criterion.
+
+fidelity:
+  divergences: >-
+    (i) The growth series is stated as a multiplicative identity in
+    Z[[X]] rather than as a rational function W(t) = N(t)/D(t); the two
+    are equivalent because D has constant term 1 and is invertible in
+    Z[[X]], and the identity form avoids any division. (ii) The
+    classical route is Steinberg's formula; the entry proves the
+    identity directly from amalgam normal forms and does not formalize
+    Steinberg's formula or the amalgam structure D_p *_{C_2} D_q as
+    such — the normal forms are built by hand and their action is
+    lifted to W by the universal property. (iii) The Coxeter matrix is
+    not fixed as an object; the statements quantify over any Coxeter
+    system whose matrix has the three stated entries, and (2) shows
+    such matrices exist. (iv) The Padovan statement (8) is for any
+    sequence with the stated initial values and recursion rather than
+    for a fixed definition, and holds from n = 2 (a(0) = 1 differs
+    from Pad 5 = 3 and a(1) = 3 from Pad 6 = 4, so n >= 2 is the exact
+    range). (v) The growth bounds (10) hold from n = 2 (they fail
+    at n = 0, where a(0) = 1 < 2). (vi) The limit (11) is the n-th-root
+    limit; the ratio limit a(n+1)/a(n) -> rho is not stated.
+    (vii) The application to the 3+1 vacuum billiard is cited; the
+    identification of the abstract Coxeter system with PGL(2,Z) and
+    with the billiard's reflection group is not formalized, and the
+    correspondence "n wall collisions = gallery distance n" is
+    elementary reflection-group geometry (a geodesic crosses each wall
+    at most once), not formal content. (viii) The module TwoThreeInf.lean is a second proof of
+    the (2,3,inf) case and is not on the compared surface. (ix)
+    tau_{p,q} is not a defined function: (16)-(20) quantify over any
+    tau > 1 solving the rate equation, and (15) gives existence and
+    uniqueness; for (2,2) no such tau exists. (x) The limit tau -> 2
+    (20) is in epsilon-N form jointly in p, q, together with tau < 2
+    (19). (xi) The minimality (18) is within the (p,q,inf) family
+    only; (14) holds from n = 2. (xii) Prior art for the family
+    statements: (12) is the case phi = id of Terragni 2016 Theorem A
+    (sphere sizes are monotone whenever m_{st} <= m'_{phi(s)phi(t)}
+    for an injection phi), and (13) is the Coxeter isomorphism
+    a <-> b; (14) follows from Theorem A and (10); the weak forms of
+    (17) and (19) are Terragni's Corollary 3.2 (against (inf,inf,inf),
+    growth rate 2), and strict (17) is immediate from Kellerhals 2013
+    (5.5)-(5.6) with her Lemma 1(a) (h_k < h_{k+1}); (18) is Floyd
+    1992 p. 482 restricted to the family; (20) is a case of Yukita
+    2024 Theorem 3.5 (continuity of the growth rate on the space of
+    Coxeter systems; Floyd 1992 p. 476 for polygons, as restated
+    there). The proofs here are independent (normal-form inclusion,
+    the series recursion, the rate equation) and kernel-checked; no
+    novelty is claimed.
+
+review:
+  status: "self-assessed"
+  reviewers:
+    - "Stephanie Alexander"
+  notes: >-
+    Statements audited by the author against the cited sources; the
+    kernel and the axiom audit are the acceptance criteria. The
+    package was re-verified independently of the proving agent (build
+    green, axioms re-elaborated for all 20 compared declarations,
+    Challenge and Solution statements checked identical 20/20),
+    the general formula was checked against brute-force sphere counts
+    for eight (p, q) pairs before formalization, and an in-house
+    adversarial mock-referee pass (AI-assisted: Anthropic Claude, in
+    Claude Code, under the author's direction) was applied to this
+    surface before submission.
+
+alignment:
+  namespace: "TriangleGrowth"
+  statements:
+    - source: "classical (Steinberg 1968 route; the amalgam D_p *_{C_2} D_q); proved here from normal forms"
+      lean: "TriangleGrowth.growth_series"
+      module: "Solution"
+      status: "proved"
+      note: >-
+        The growth-series identity for every (p, q, inf) Coxeter
+        system, p, q >= 2, in Z[[X]].
+    - source: "this work (non-vacuity)"
+      lean: "TriangleGrowth.triangle_matrix_exists"
+      module: "Solution"
+      status: "proved"
+      note: "A Coxeter matrix of type (p, q, inf) exists for all p, q >= 2."
+    - source: "Cannon-Wagreich 1992 Prop. 3.1 (per OEIS A096231); Floyd 1992; Kellerhals 2013 Section 5.2"
+      lean: "TriangleGrowth.growth_series_23"
+      module: "Solution"
+      status: "proved"
+      note: "(2,3,inf): W(t)(1 - t^2 - t^3) = (1 + t)^2 (1 + t + t^2)."
+    - source: "instance of (1)"
+      lean: "TriangleGrowth.growth_series_24"
+      module: "Solution"
+      status: "proved"
+      note: "(2,4,inf): W(t)(1 - t^2 - t^3 - t^4) = (1 + t)^2 (1 + t + t^2 + t^3)."
+    - source: "instance of (1)"
+      lean: "TriangleGrowth.growth_series_33"
+      module: "Solution"
+      status: "proved"
+      note: "(3,3,inf): W(t)(1 - t^2 - 2 t^3 - t^4) = (1 + t)(1 + t + t^2)^2."
+    - source: "this work (coefficient extraction from (3))"
+      lean: "TriangleGrowth.sphere23_values"
+      module: "Solution"
+      status: "proved"
+      note: "a(0..4) = 1, 3, 5, 7, 9 and a(n+5) = a(n+3) + a(n+2)."
+    - source: "this work"
+      lean: "TriangleGrowth.sphere23_rec_fails_at_4"
+      module: "Solution"
+      status: "proved"
+      note: "a(4) = 9 is not a(2) + a(1) = 8: the recursion of (6) fails one step earlier than its stated range."
+    - source: "OEIS A096231 ('Equals A000931(n+10)'); kernel certificate here"
+      lean: "TriangleGrowth.sphere23_padovan"
+      module: "Solution"
+      status: "proved"
+      note: "a(n) = Pad(n + 5) for n >= 2."
+    - source: "classical (the plastic number)"
+      lean: "TriangleGrowth.plastic_exists_unique"
+      module: "Solution"
+      status: "proved"
+      note: "Exactly one real rho > 1 with rho^3 = rho + 1."
+    - source: "this work (two-sided exponential bounds)"
+      lean: "TriangleGrowth.sphere23_growth_bounds"
+      module: "Solution"
+      status: "proved"
+      note: "2 rho^n <= a(n) <= 4 rho^n for n >= 2."
+    - source: "Bucher-Talambutsa 2016 Prop. 18 (this statement); Floyd 1992; proved here from (10)"
+      lean: "TriangleGrowth.sphere23_root_tendsto"
+      module: "Solution"
+      status: "proved"
+      note: "a(n)^(1/n) -> rho: the growth rate of (2,3,inf) = PGL(2,Z) in its reflections is the plastic number."
+    - source: "Terragni 2016 Theorem A (case phi = id); proved here by normal-form inclusion"
+      lean: "TriangleGrowth.sphere_mono"
+      module: "Solution"
+      status: "proved"
+      note: "a_{p,q}(n) <= a_{p',q'}(n) for p <= p', q <= q', every n."
+    - source: "Coxeter isomorphism a <-> b; proved here by normal-form swap"
+      lean: "TriangleGrowth.sphere_symm"
+      module: "Solution"
+      status: "proved"
+      note: "a_{p,q}(n) = a_{q,p}(n) for every n."
+    - source: "Terragni 2016 Theorem A with (10); Floyd 1992 p. 482 for the rates"
+      lean: "TriangleGrowth.sphere_ge_plastic"
+      module: "Solution"
+      status: "proved"
+      note: "2 rho^n <= a(n) for n >= 2 and every hyperbolic (p, q)."
+    - source: "classical (the denominator of (1))"
+      lean: "TriangleGrowth.rate_exists_unique"
+      module: "Solution"
+      status: "proved"
+      note: "For (p,q) != (2,2), exactly one tau > 1 solves the rate equation."
+    - source: "classical (Floyd 1992); proved here from (1)"
+      lean: "TriangleGrowth.sphere_root_tendsto_rate"
+      module: "Solution"
+      status: "proved"
+      note: "a(n)^(1/n) -> tau_{p,q} for every hyperbolic member."
+    - source: "Terragni 2016 Cor. 3.2 (weak); strict via Kellerhals 2013 (5.5) and Lemma 1(a); proved here from the rate equation"
+      lean: "TriangleGrowth.rate_lt_rate"
+      module: "Solution"
+      status: "proved"
+      note: "tau strictly increasing in (p, q)."
+    - source: "Floyd 1992 p. 482; Kellerhals 2013 Section 5.2, restricted to the family"
+      lean: "TriangleGrowth.plastic_le_rate"
+      module: "Solution"
+      status: "proved"
+      note: "rho <= tau_{p,q}, with equality exactly at (2,3) and (3,2): the plastic number is the family minimum."
+    - source: "elementary; Terragni 2016 Cor. 3.2 gives tau <= 2"
+      lean: "TriangleGrowth.rate_lt_two"
+      module: "Solution"
+      status: "proved"
+      note: "tau_{p,q} < 2."
+    - source: "Yukita 2024 Theorem 3.5 with omega(inf,inf,inf) = 2 (Floyd 1992 p. 476 for polygons); proved here directly"
+      lean: "TriangleGrowth.rate_tendsto_two"
+      module: "Solution"
+      status: "proved"
+      note: "tau_{p,q} -> 2 as p, q -> infinity (epsilon-N form)."
+
+acknowledgements: >-
+  Built on Mathlib and the Lean 4 toolchain — in particular the Coxeter
+  group library (CoxeterSystem, its universal property and length
+  theory), formal power series, and the real-analysis library; thanks to
+  the leanprover community. Developed with AI assistance (Anthropic
+  Claude, in Claude Code) under the author's direction.
