@@ -140,7 +140,7 @@ matrices rounded to 1e-7; mpmath at 50 digits for the rates):
 
   Note: tau_(3,3) is the golden ratio (1 - (t+t^2)^2 = (1-t-t^2)(1+t+t^2)) and tau_(2,4) = 1.46557... is the
   real root of x^3 = x^2 + 1; the sphere ratios a(12)/a(11) = 754/466 and 249/170 agree.
-FILES (sha256  lines  name) — regenerated 2026-10-16 (final: module-system headers `module` / `public import` / `@[expose] public section` added to every .lean for the registry's source rule; build green 8942 jobs; #print axioms standard for all 20 compared names; Challenge vs Solution statements identical 20/20; 20 sorry in Challenge only; no native_decide)
+FILES (sha256  lines  name) — regenerated 2026-10-16 after switching the Mathlib requirement in lakefile.toml from scope = "leanprover-community" to git = "https://github.com/leanprover-community/mathlib4.git" (same pinned revision 065356127b1d; matches lake-manifest.json; build green, no re-resolution) so the registry's definition audit can reach the pinned Mathlib source
   26c59829e795f2b6c030e719580b73decb92f3c67d4f876980469fb0e09afbd2    237  Challenge.lean
   714f85db51df892d53b846d00b8ba9fbb980814cd3983da122767ce7beb942d2     24  CoxeterGrowth.lean
   0acf7420bd0526723402ee971c4b58aaf685675875df76b7523e3ee467a5147f    563  CoxeterGrowth/Family.lean
@@ -151,7 +151,7 @@ FILES (sha256  lines  name) — regenerated 2026-10-16 (final: module-system hea
   d96a0f8cc8a35e424e52752dc4af5e3623f68e8e8af0efd463157fc5f5ed3e5c    809  CoxeterGrowth/TwoThreeInf.lean
   e335f9a39f9d4442f2b613dafe82c367d25c884d50bbb07617b2c7d246791e08    165  Solution.lean
   485462fce69524d71d2a7778ffd30c28de72e7a3e373d59593156d5b661ac91d     31  comparator.json
-  eac4e3833dc7de9357dc2dcd41c7f5633b570398b769161df415df8076348c56     17  lakefile.toml
+  ac5ef6b84d2e446318d4038fb9dcf4d284e5dc500e193a5bfa69a8adb37cc4dc     17  lakefile.toml
   068a6ff874268ad532f404e18a0434289dafdb588cf7547a4ebccac0d4e65973    117  lake-manifest.json
   8dc8d6f560141069d9073e370611716ef77ada0da8ffa37e2149f44b2e63ac7a      1  lean-toolchain
   d32be532ae3b0129081943d5ba0140833d203720b69e21bc64c735160db351cb     21  LICENSE
