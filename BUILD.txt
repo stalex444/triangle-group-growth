@@ -156,4 +156,4 @@ FILES (sha256  lines  name) — regenerated 2026-10-16 (final: module-system hea
   8dc8d6f560141069d9073e370611716ef77ada0da8ffa37e2149f44b2e63ac7a      1  lean-toolchain
   d32be532ae3b0129081943d5ba0140833d203720b69e21bc64c735160db351cb     21  LICENSE
   104443561fcf3c2d80c04af87c6074b8c3af505935f0dddecacfa388a34e4143    192  README.md
-  0ee58dbd63f45d463eaba67163a5bf02b8d31220aa6c7f17a3a4a54e238fc4ad    675  formalization.yaml
+  18583c1f1ee70540061a0698376fc5b5f8616fc0b8170ed7e37808396af1a08c    682  formalization.yaml

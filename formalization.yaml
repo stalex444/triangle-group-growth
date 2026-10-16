@@ -137,12 +137,15 @@ sources:
     # Crossref-verified 2026-10-16: DOI 10.1007/BF01444729.
     type: "article"
     location: "https://doi.org/10.1007/BF01444729"
-    relationship: "background"
+    relationship: "adapts"
     note: >-
       Growth rates of cofinite non-cocompact (cusped) planar
       hyperbolic Coxeter groups are Pisot numbers; of cocompact ones,
       Salem numbers; and (p. 482) (2,3,inf) has the minimal growth rate
-      among the cusped planar groups. For (p, q) != (2, 2) the
+      among the cusped planar groups. Compared statements (14) and (18)
+      adapt that minimality to the (p, q, inf) family (the restriction
+      is proved here from the series; the theorem over all cusped
+      planar groups is not formalized). For (p, q) != (2, 2) the
       (p, q, inf) groups are cusped planar hyperbolic triangle groups,
       so their growth rates are Pisot by this theorem ((2, 2, inf) is
       affine, growth rate 1); for (2,3,inf) the compared statement (11)
@@ -174,10 +177,11 @@ sources:
     # Crossref-verified 2026-10-16: DOI 10.2140/agt.2013.13.1001.
     type: "article"
     location: "https://doi.org/10.2140/agt.2013.13.1001"
-    relationship: "background"
+    relationship: "independently-proves"
     note: >-
       Computes the growth series of the triangle group [3, inf] =
-      (2,3,inf) — the compared instance (3) — and gives (Section 5.2,
+      (2,3,inf) — the compared instance (3), proved here independently
+      as a case of the general identity (1) — and gives (Section 5.2,
       Proposition and Remark) an elementary alternative proof of
       Floyd's result that its growth rate, the plastic number, is the
       minimum over all cofinite non-cocompact planar hyperbolic Coxeter
@@ -196,11 +200,13 @@ sources:
     # arXiv:1209.4071 (full text read 2026-10-15).
     type: "article"
     location: "https://doi.org/10.1007/s11856-016-1299-4"
-    relationship: "background"
+    relationship: "independently-proves"
     note: >-
       Proposition 18 (Section 6): the growth rate of PGL(2,Z) in the
       three Coxeter reflections is the plastic number — compared
-      statement (11), proved there via a normal form (their Lemma 19);
+      statement (11), proved there via a normal form (their Lemma 19)
+      and proved here independently, from the general identity (1)
+      and the bounds (10), with the kernel as the check;
       with Mann's bound (their Theorem 2) this makes it the minimal
       growth rate of PGL(2,Z), and of GL(2,Z), over all finite
       generating sets (cited, not formalized); PSL(2,Z) and SL(2,Z)
@@ -215,12 +221,13 @@ sources:
     # Crossref-verified 2026-10-16: DOI 10.4171/GGD/358; arXiv:1312.3437.
     type: "article"
     location: "https://doi.org/10.4171/GGD/358"
-    relationship: "background"
+    relationship: "independently-proves"
     note: >-
       Theorem A: sphere sizes are monotone, a_n <= a'_n, whenever
       m_{st} <= m'_{phi(s)phi(t)} for an injection phi: S -> S'
-      (compared statement (12) is its case phi = id; Corollary 3.2 is
-      the rate inequality); Theorem B: the minimal growth rate over all
+      (compared statement (12) is its case phi = id for the (p, q, inf)
+      family, proved here independently by normal-form inclusion;
+      Corollary 3.2 is the rate inequality); Theorem B: the minimal growth rate over all
       non-spherical, non-affine Coxeter systems is that of E_10 (about
       1.1380787);
       Section 5.8 records the PGL(2,Z) value. Cited for the landscape
