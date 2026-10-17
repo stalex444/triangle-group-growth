@@ -1,5 +1,5 @@
 name = "coxeter_growth"
-defaultTargets = ["CoxeterGrowth", "Challenge", "Solution"]
+defaultTargets = ["CoxeterGrowth", "Challenge", "Solution", "DefinitionAudit"]
 
 [[require]]
 name = "mathlib"
@@ -15,3 +15,6 @@ name = "Challenge"
 
 [[lean_lib]]
 name = "Solution"
+
+[[lean_lib]]
+name = "DefinitionAudit"

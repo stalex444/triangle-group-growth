@@ -84,6 +84,15 @@ can occupy after exactly `n` wall collisions (over all initial data), so stateme
 give the exponential growth rate of those outcomes; the count is elementary reflection-group
 geometry (a geodesic crosses each wall at most once, so from `C` to `wC` it crosses exactly the
 `ℓ(w)` separating walls), not part of the formal content.
+
+Imported definitions. The statements use Mathlib's `CoxeterMatrix`, `CoxeterSystem`,
+`CoxeterSystem.length`, `Nat.card` and `PowerSeries.mk`, quoted verbatim from the pinned
+revision, with permalinks, in `MATHLIB_DEFINITIONS.md`. Mathlib encodes the Coxeter-matrix entry
+`∞` as `0` (an entry `0` imposes no relation), so `M 0 1 = 0` means `m(a, b) = ∞`;
+`cs.length w` is the least number of simple reflections whose product is `w`; and every sphere
+`{w : W // cs.length w = n}` is finite, so `Nat.card` of it is the number of elements of length
+`n`. These facts are kernel-checked in `DefinitionAudit.lean` (built with the package, not
+compared).
 -/
 
 open PowerSeries Finset Filter Topology

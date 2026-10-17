@@ -85,9 +85,16 @@ project:
     hypotheses, rho through its defining equation and 1 < rho, the
     Padovan sequence through its initial values and recursion; the
     compared statements use only core Mathlib vocabulary
-    (CoxeterSystem, CoxeterSystem.length, Nat.card, PowerSeries.mk,
-    Finset.range/Ico sums, Filter.Tendsto, nhds, real powers) — zero
-    custom definitions.
+    (CoxeterMatrix, CoxeterSystem, CoxeterSystem.length, Nat.card, PowerSeries.mk,
+    Finset.range/Ico sums, Filter.Tendsto, Filter.atTop, nhds, real powers) — zero
+    custom definitions. The pinned source of each Coxeter-specific
+    imported definition, and of Nat.card and PowerSeries.mk, is quoted
+    verbatim, with permalinks, in MATHLIB_DEFINITIONS.md (the remaining
+    vocabulary is standard Mathlib and is not quoted), and
+    DefinitionAudit.lean kernel-checks the facts the statements rely on
+    (the entry 0 encodes infinity; length is the minimal word length;
+    spheres are finite and Nat.card is their cardinality; every Coxeter
+    matrix has a Coxeter system).
   authors:
     - "Stephanie Alexander"
   license: "MIT"

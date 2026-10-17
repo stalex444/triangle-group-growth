@@ -138,6 +138,25 @@ the proof modules; `comparator.json` is the machine comparison surface;
 file hashes, `#print axioms` for every compared declaration, brute-force
 table).
 
+**Imported definitions.** `MATHLIB_DEFINITIONS.md` quotes verbatim, with
+file paths, line numbers and permalinks at the pinned Mathlib revision,
+the Mathlib definitions behind the Coxeter group, its length and the
+sphere count: `CoxeterMatrix` (including Mathlib's encoding of the entry
+`∞` as `0`, and its coercion to entries), the Coxeter relations and
+group, `CoxeterSystem` and the canonical system, `CoxeterSystem.simple`,
+`CoxeterSystem.wordProd`, `CoxeterSystem.length`, `Nat.card` and
+`PowerSeries.mk`. The remaining vocabulary (`Finset` sums,
+`PowerSeries.X`, `Filter.Tendsto`, `Filter.atTop`, `𝓝`, real powers) is
+standard Mathlib and is not quoted. `DefinitionAudit.lean` (a default build target, imports
+Mathlib only, not compared) kernel-checks the facts the informal account
+relies on: an entry `0` imposes no relation, so `M 0 1 = 0` means
+`m(a, b) = ∞`; `cs.length w` is the least length of a word in the simple
+reflections with product `w` (Mathlib marks the body of `length`
+`@[no_expose]`, so this is stated from its public lemmas); every sphere is
+finite, and `Nat.card` of it is the cardinality of the finite set of
+elements of length `n`; every Coxeter matrix has a Coxeter system; and
+the `n`-th coefficient of the growth series is `a(n)`.
+
 Proof modules, under `CoxeterGrowth/`:
 - `Plastic.lean` — the plastic number: existence (intermediate value
   theorem on `[1, 2]`), uniqueness among roots `> 1` and among all real

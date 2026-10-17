@@ -1,9 +1,9 @@
-coxeter-growth -- kernel build record, 2026-10-16 14:47 EDT
+coxeter-growth -- kernel build record, 2026-10-17 (DefinitionAudit target added)
 Toolchain: leanprover/lean4:v4.35.0-rc2
 Mathlib rev: 065356127b1dc0016f66b7283ce0ce2c4055aa55
-Build: lake build (defaultTargets CoxeterGrowth, Challenge, Solution) -> Build completed successfully (8942 jobs)
+Build: lake build (defaultTargets CoxeterGrowth, Challenge, Solution, DefinitionAudit) -> Build completed successfully (8944 jobs)
   Challenge.lean: 20 'declaration uses sorry' warnings (the compared placeholders), no errors
-  CoxeterGrowth/Family.lean, Solution.lean, CoxeterGrowth.lean: no warnings
+  CoxeterGrowth/Family.lean, Solution.lean, CoxeterGrowth.lean, DefinitionAudit.lean: no warnings
   CoxeterGrowth/TriangleNF.lean, CoxeterGrowth/Instances.lean: style-linter warnings only (unused simp
   arguments, unused variables, unreachable tactics), no errors; these two files are unchanged in this revision
 
@@ -50,7 +50,22 @@ Files: see the regenerated FILES block at the end of this record (the earlier pe
   'CoxeterGrowth.Triangle.rate23_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
   (20/20 compared names; every line above is exactly [propext, Classical.choice, Quot.sound])
 
-sorry count: Challenge.lean 20; all other modules (CoxeterGrowth/*, CoxeterGrowth.lean, Solution.lean) 0
+#print axioms for DefinitionAudit.lean (imports Mathlib only; not compared; lake env lean on a check file importing DefinitionAudit):
+  'DefinitionAudit.relation_eq' depends on axioms: [propext, Quot.sound]
+  'DefinitionAudit.relation_eq_one_of_eq_zero' depends on axioms: [propext, Quot.sound]
+  'DefinitionAudit.group_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'DefinitionAudit.system_nonempty' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'DefinitionAudit.simple_sq' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'DefinitionAudit.simple_mul_simple_pow' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'DefinitionAudit.length_isLeast' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'DefinitionAudit.length_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'DefinitionAudit.length_simple' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'DefinitionAudit.sphere_finite' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'DefinitionAudit.sphere_card_eq_finset_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'DefinitionAudit.coeff_growth' depends on axioms: [propext, Classical.choice, Quot.sound]
+  (12/12; each is a subset of [propext, Classical.choice, Quot.sound])
+
+sorry count: Challenge.lean 20; all other modules (CoxeterGrowth/*, CoxeterGrowth.lean, Solution.lean, DefinitionAudit.lean) 0
 native_decide count (all files): 0; admit: 0; axiom declarations: 0
 Challenge.lean imports: import Mathlib
 Statement match Challenge vs Solution, 20 compared theorems:
@@ -140,8 +155,8 @@ matrices rounded to 1e-7; mpmath at 50 digits for the rates):
 
   Note: tau_(3,3) is the golden ratio (1 - (t+t^2)^2 = (1-t-t^2)(1+t+t^2)) and tau_(2,4) = 1.46557... is the
   real root of x^3 = x^2 + 1; the sphere ratios a(12)/a(11) = 754/466 and 249/170 agree.
-FILES (sha256  lines  name) — regenerated 2026-10-16 after switching the Mathlib requirement in lakefile.toml from scope = "leanprover-community" to git = "https://github.com/leanprover-community/mathlib4.git" (same pinned revision 065356127b1d; matches lake-manifest.json; build green, no re-resolution) so the registry's definition audit can reach the pinned Mathlib source
-  26c59829e795f2b6c030e719580b73decb92f3c67d4f876980469fb0e09afbd2    237  Challenge.lean
+FILES (sha256  lines  name) — regenerated 2026-10-17 after adding DefinitionAudit.lean (a default build target, imports Mathlib only, not compared) and MATHLIB_DEFINITIONS.md (verbatim pinned Mathlib excerpts with permalinks) for the registry's definition audit; Challenge.lean changed in its opening docstring only (20/20 compared statements unchanged)
+  46eee30b7737bfd44f23ca7062e2689786acdbf8cbecaf026cafa06688a99e3a    246  Challenge.lean
   714f85db51df892d53b846d00b8ba9fbb980814cd3983da122767ce7beb942d2     24  CoxeterGrowth.lean
   0acf7420bd0526723402ee971c4b58aaf685675875df76b7523e3ee467a5147f    563  CoxeterGrowth/Family.lean
   08229afda401c8e9c63ec64f9f00a7b6713571dcc18d2cbceb690ad934f703bc    260  CoxeterGrowth/Instances.lean
@@ -149,11 +164,13 @@ FILES (sha256  lines  name) — regenerated 2026-10-16 after switching the Mathl
   605cb28a8b5a81393e14a94ca5a6175040878199a4663b5914ffa625e7e30211    316  CoxeterGrowth/Triangle.lean
   4d8b9d95e62f3a48245bb86d1d4ebe2e9728bc37d51064b8fc1a0b21b6999c93    709  CoxeterGrowth/TriangleNF.lean
   d96a0f8cc8a35e424e52752dc4af5e3623f68e8e8af0efd463157fc5f5ed3e5c    809  CoxeterGrowth/TwoThreeInf.lean
+  2e573b5533af6a5c6e3478887985f9b28854826bd7af99d1a65cf8012f3c1483    101  DefinitionAudit.lean
   e335f9a39f9d4442f2b613dafe82c367d25c884d50bbb07617b2c7d246791e08    165  Solution.lean
+  d9974c4503eb90f89fcf1afb3fb3b0805da8af744bf6bb22b5e3388ec2e2a54b    195  MATHLIB_DEFINITIONS.md
   485462fce69524d71d2a7778ffd30c28de72e7a3e373d59593156d5b661ac91d     31  comparator.json
-  ac5ef6b84d2e446318d4038fb9dcf4d284e5dc500e193a5bfa69a8adb37cc4dc     17  lakefile.toml
-  068a6ff874268ad532f404e18a0434289dafdb588cf7547a4ebccac0d4e65973    117  lake-manifest.json
+  518ad92c7ae65df16cdbdba0222e7061a558b22d452efeb1d639324376a09b98     20  lakefile.toml
+  068a6ff874268ad532f404e18a0434289dafdb588cf7547a4ebccac0d4e65973    116  lake-manifest.json
   8dc8d6f560141069d9073e370611716ef77ada0da8ffa37e2149f44b2e63ac7a      1  lean-toolchain
   d32be532ae3b0129081943d5ba0140833d203720b69e21bc64c735160db351cb     21  LICENSE
-  104443561fcf3c2d80c04af87c6074b8c3af505935f0dddecacfa388a34e4143    192  README.md
-  18583c1f1ee70540061a0698376fc5b5f8616fc0b8170ed7e37808396af1a08c    682  formalization.yaml
+  fd45f0a7b0bf4645b722157ff1288829e5effa0792955cdd38ba715e00ba4042    211  README.md
+  ce5e6713b659a1892cd1cb2c4bd9ce0f2227a8685d08428241dc752e919062d3    689  formalization.yaml
